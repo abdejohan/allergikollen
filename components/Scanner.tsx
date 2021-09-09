@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import { handleBarCodeType } from "../types";
 
-interface Props {
+interface ScannerProps {
 	returnData(value: string): any;
 }
 
-const Scanner = (props) => {
+const Scanner: React.FC<ScannerProps> = (props) => {
 	const { returnData } = props;
-	const [hasPermission, setHasPermission] = useState(null);
+	const [hasPermission, setHasPermission] = useState<Boolean>(false);
 	const [scanned, setScanned] = useState(false);
 
 	useEffect(() => {
@@ -18,7 +19,7 @@ const Scanner = (props) => {
 		})();
 	}, []);
 
-	const handleBarCodeScanned = ({ type, data }) => {
+	const handleBarCodeScanned = ({ type, data }: handleBarCodeType) => {
 		setScanned(true);
 		alert(`Bar code with type ${type} and data ${data} has been scanned!`);
 		returnData(data);

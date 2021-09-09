@@ -6,9 +6,10 @@ import { RootTabScreenProps } from "../types";
 
 const TabOneScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => {
 	const [data, setData] = useState(null);
+	const [value, setValue] = useState<string>();
 	return (
 		<View style={styles.container}>
-			<Scanner returnData='' />
+			<Scanner returnData={(value) => setValue(value)} />
 		</View>
 	);
 };
