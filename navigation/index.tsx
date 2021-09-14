@@ -75,6 +75,7 @@ function BottomTabNavigator() {
 				component={TabOneScreen}
 				options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
 					title: "Scanner",
+					headerShown: false,
 					tabBarIcon: ({ color }) => <TabBarIcon name='barcode' color={color} />,
 					headerRight: () => (
 						<Pressable
